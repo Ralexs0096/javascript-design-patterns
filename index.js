@@ -1,26 +1,19 @@
 /**
  * Command Pattern
  *
- * With the Command Pattern, we can decouple objects that execute a certain task
- * from the object that calls the method
+ * Let’s refactor the OrderManager class:
+ * instead of having the placeOrder, cancelOrder and trackOrder methods,
+ * it will have one single method: execute. This method will execute any command it’s given.
+ *
+ * Each command should have access to the orders of the manager, which we’ll pass as its first argument.
  */
 
 class OrderManager {
     constructor() {
-        this.orders = []
+        this.orders = [];
     }
 
-    placeOrder(order, id) {
-        this.orders.push(id)
-        return `You have successfully ordered ${order} (${id})`;
-    }
-
-    trackOrder(id) {
-        return `Your order ${id} will arrive in 20 minutes.`
-    }
-
-    cancelOrder(id) {
-        this.orders = this.orders.filter(order => order.id !== id)
-        return `You have canceled your order ${id}`
+    execute(command, ...args) {
+        return command.execute(this.orders, ...args);
     }
 }
