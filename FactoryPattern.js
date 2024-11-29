@@ -1,30 +1,12 @@
 /**
- * A function is a factory function when it returns
- * a new object without the use of the `new` keyword.
+ * The Factory pattern can be useful if we're creating relatively
+ * complex and configurable objects.
+ * We can easily create new objects that contain the custom keys and values.
+ *
  */
 
-const createUser = ({firstName, lastName, email}) => ({
-    firstName,
-    lastName,
-    email,
-    fullName() {
-        return `${this.firstName} ${this.lastName}`
-    }
+const createObjectFromArray = ([key, value]) =>({
+ [key]: value
 })
 
-// now we can create multiple users:
-
-const user1 = createUser({
-    firstName: "John",
-    lastName: "Doe",
-    email: "john@doe.com"
-});
-
-const user2 = createUser({
-    firstName: "Jane",
-    lastName: "Doe",
-    email: "jane@doe.com"
-});
-
-console.log(user1);
-console.log(user2);
+createObjectFromArray(["name", "Alex"])
