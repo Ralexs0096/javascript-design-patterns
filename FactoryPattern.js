@@ -1,12 +1,28 @@
 /**
- * The Factory pattern can be useful if we're creating relatively
- * complex and configurable objects.
- * We can easily create new objects that contain the custom keys and values.
- *
+ * in many cases it may be more memory efficient to create
+ * new instances instead of new objects each time.
  */
 
-const createObjectFromArray = ([key, value]) =>({
- [key]: value
-})
+class User {
+    constructor(firstName, lastName, email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
-createObjectFromArray(["name", "Alex"])
+    fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+
+const user1 = new User({
+    firstName: "John",
+    lastName: "Doe",
+    email: "john@doe.com",
+});
+
+const user2 = new User({
+    firstName: "Jane",
+    lastName: "Doe",
+    email: "jane@doe.com",
+});
