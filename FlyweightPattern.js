@@ -17,3 +17,21 @@ class Book {
         this.isbn = isbn;
     }
 }
+
+// let create the functionality to add new books to the list
+
+const books = new Map();
+
+const createBook = (title, author, isbn) => {
+    const existingBook = books.has(isbn);
+
+    /**
+     * If a book has the same ISBN number,
+     * Thus is the exact same book type,
+     * we don’t want to create an entirely new Book instance.
+     * Instead, we should first check whether this book already exists.
+     */
+    if(existingBook){
+        return books.get(isbn)
+    }
+}
